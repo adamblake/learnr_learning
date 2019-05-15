@@ -1,0 +1,66 @@
+---
+title: "ch4-10"
+output: 
+  learnr::tutorial:
+    progressive: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+require(Lock5withR)
+require(mosaic)
+require(lsr)
+require(supernova)
+
+source("testwhat_adapter.R")
+tutorial_options(exercise.checker = testwhat_adapter)
+set_adapter_seed(13)
+```
+
+## Exercise ch4-10 {data-progressive=TRUE}
+
+### Create a random sample of 211 numbers between 1 and 20
+```{r save_any1, exercise = TRUE}
+Any1_20 <-
+```
+
+```{r save_any1-solution}
+Any1_20 <- resample(1:20, 211)
+```
+
+```{r save_any1-check}
+ex() %>% 
+  check_object("Any1_20") %>% 
+  check_equal()
+```
+
+### This puts `Any1_20` into a new data frame called `Computer`
+```{r}
+Any1_20 <- resample(1:20, 211)
+Computer <- data.frame(Any1_20)
+```
+
+```{r hist_any1-setup}
+Any1_20 <- resample(1:20, 211)
+Computer <- data.frame(Any1_20)
+```
+
+### Make a histogram of `Any1_20` from `Computer`
+```{r hist_any1, exercise = TRUE}
+
+```
+
+```{r hist_any1-solution}
+gf_histogram(~Any1_20, data = Computer, bins = 20)
+```
+
+```{r hist_any1-check}
+ex() %>% 
+  check_function("gf_histogram") %>% {
+    check_arg(., "bins") %>% check_equal()
+    check_arg(., "object") %>% check_equal()
+    check_arg(., "data") %>% check_equal()
+  }
+```
