@@ -3,20 +3,55 @@ title: "ch4-10"
 output: 
   learnr::tutorial:
     progressive: true
+    df_print: default
 runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
+# learnr setup
 library(learnr)
 
-require(Lock5withR)
-require(mosaic)
-require(lsr)
-require(supernova)
+# inline_evaluator <- function(expr, timelimit) {
+# 
+#   result <- NULL
+# 
+#   list(
+#     start = function() {
+# 
+#       # setTimeLimit -- if the timelimit is exceeeded an error will occur
+#       # during knit which we will catch and format within evaluate_exercise
+#       setTimeLimit(elapsed = timelimit, transient = TRUE);
+#       on.exit(setTimeLimit(cpu = Inf, elapsed = Inf, transient = FALSE), add = TRUE);
+# 
+#       # execute and capture result
+#       result <<- tryCatch(
+#         force(expr),
+#         error = function(e) learnr:::error_result(e)
+#       )
+#     },
+# 
+#     completed = function() {
+#       TRUE
+#     },
+# 
+#     result = function() {
+#       result
+#     }
+#   )
+# }
+# 
+# options(tutorial.exercise.evaluator = inline_evaluator)
+tutorial_options(exercise.timelimit = 60)
 
 source("testwhat_adapter.R")
 tutorial_options(exercise.checker = testwhat_adapter)
-set_adapter_seed(13)
+# set_adapter_seed(13)
+
+# exercise setup
+# library(Lock5withR)
+# library(mosaic)
+# library(lsr)
+# library(supernova)
 ```
 
 ## Exercise ch4-10 {data-progressive=TRUE}
@@ -31,36 +66,36 @@ Any1_20 <- resample(1:20, 211)
 ```
 
 ```{r save_any1-check}
-ex() %>% 
-  check_object("Any1_20") %>% 
+ex() %>
+  check_object("Any1_20") %>%
   check_equal()
 ```
 
-### This puts `Any1_20` into a new data frame called `Computer`
-```{r}
-Any1_20 <- resample(1:20, 211)
-Computer <- data.frame(Any1_20)
-```
+<!-- ### This puts `Any1_20` into a new data frame called `Computer` -->
+<!-- ```{r} -->
+<!-- Any1_20 <- resample(1:20, 211) -->
+<!-- Computer <- data.frame(Any1_20) -->
+<!-- ``` -->
 
-```{r hist_any1-setup}
-Any1_20 <- resample(1:20, 211)
-Computer <- data.frame(Any1_20)
-```
+<!-- ```{r hist_any1-setup} -->
+<!-- Any1_20 <- resample(1:20, 211) -->
+<!-- Computer <- data.frame(Any1_20) -->
+<!-- ``` -->
 
-### Make a histogram of `Any1_20` from `Computer`
-```{r hist_any1, exercise = TRUE}
+<!-- ### Make a histogram of `Any1_20` from `Computer` -->
+<!-- ```{r hist_any1, exercise = TRUE} -->
 
-```
+<!-- ``` -->
 
-```{r hist_any1-solution}
-gf_histogram(~Any1_20, data = Computer, bins = 20)
-```
+<!-- ```{r hist_any1-solution} -->
+<!-- gf_histogram(~Any1_20, data = Computer, bins = 20) -->
+<!-- ``` -->
 
-```{r hist_any1-check}
-ex() %>% 
-  check_function("gf_histogram") %>% {
-    check_arg(., "bins") %>% check_equal()
-    check_arg(., "object") %>% check_equal()
-    check_arg(., "data") %>% check_equal()
-  }
-```
+<!-- ```{r hist_any1-check} -->
+<!-- ex() %>%  -->
+<!--   check_function("gf_histogram") %>% { -->
+<!--     check_arg(., "bins") %>% check_equal() -->
+<!--     check_arg(., "object") %>% check_equal() -->
+<!--     check_arg(., "data") %>% check_equal() -->
+<!--   } -->
+<!-- ``` -->

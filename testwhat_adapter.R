@@ -47,16 +47,16 @@ testwhat_adapter <- function(label, user_code, solution_code, check_code,
   )
 
   # fail gracefully for bad SCT
-  if ("simpleError" %in% class(result)) {
-    correct <- FALSE
-    message <- glue(
-      "Exercise setup error: {result$message} in {result$call}",
-      "Please notify instructor or course developer. Thank you!",
-      .sep = "\n"
-    )
-  }
+  # if ("simpleError" %in% class(result)) {
+  #   correct <- FALSE
+  #   message <- glue(
+  #     "Exercise setup error: {result$message} in {result$call}",
+  #     "Please notify instructor or course developer. Thank you!",
+  #     .sep = "\n"
+  #   )
+  # }
 
-  #
+  # set SCT feedback
   if ("sct_failure" %in% class(result)) {
     correct <- FALSE
     message <- result$message
